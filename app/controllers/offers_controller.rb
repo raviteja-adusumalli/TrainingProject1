@@ -2,13 +2,12 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-   
+    @offers = Offer.all
     
-   kit = PDFKit.new(html)
+   kit = PDFKit.new(@offers)
   # kit.stylesheets << ''
    pdf = kit.to_pdf
-   send_data(kit.to_pdf,:page_size => 'Letter') 
-    @offers = Offer.all
+   #send_data(kit.to_pdf,:page_size => 'Letter') 
   #    respond_to do |format|
   #      format.pdf # index.html.erb
   #      format.json { render json: @offers }
